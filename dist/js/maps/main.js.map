@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["window","addEventListener","document","querySelector"],"mappings":"aACAA,OAAOC,iBAAiB,OAAQ,WADhCC,SAAAC,cAAA,cACOF,WAAiB","file":"../main.js","sourcesContent":["// preloader\r\nwindow.addEventListener('load', function () {\r\n   let preloader = document.querySelector('.preloader');\r\n   preloader.className += \" hidden\";\r\n});"]}
