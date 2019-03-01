@@ -18,7 +18,6 @@ let gulp		=	require('gulp'),
 /*----------------------------------------------------*/
 let path = {
     src: {
-        html:       'src/*.html',
         sass: 		'src/sass/style.sass',
         img: 		'src/img/**/*.*',
         js: 		'src/js/**/*.js',
@@ -30,7 +29,6 @@ let path = {
     },
 
     dist: {
-        html:       'dist/',
         css: 		'dist/css/',
         img: 		'dist/img/',
         js:    		'dist/js/',
@@ -40,7 +38,7 @@ let path = {
 
 gulp.task('dev', ['all'], () => {
     bs.init({
-        server: "dist/",
+        server: "./",
         notify: false,
         open: true,
         ui: false
@@ -49,18 +47,18 @@ gulp.task('dev', ['all'], () => {
     gulp.watch('src/**/*.+(sass|scss)', ['sass']);
     gulp.watch('src/js/**/*.js', ['js']);
     gulp.watch('src/img/*.*', ['img']);
-    gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('./**/*.html', ['html']);
 });
 
-gulp.task('html', () => {
-    gulp.src(path.src.html)
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(gulp.dest(path.dist.html))
-        .pipe(bs.stream());
-});
+// gulp.task('html', () => {
+//     gulp.src(path.src.html)
+//         .pipe(fileinclude({
+//             prefix: '@@',
+//             basepath: '@file'
+//         }))
+//         .pipe(gulp.dest(path.dist.html))
+//         .pipe(bs.stream());
+// });
 
 gulp.task('sass', () => {
     gulp.src(path.src.sass)
@@ -112,7 +110,7 @@ gulp.task('img', () => {
 });
 
 
-gulp.task('all', ['html', 'sass', 'js', 'libs', 'fonts', 'img']);
+gulp.task('all', ['sass', 'js', 'libs', 'fonts', 'img']);
 
 gulp.task('smartgrid', () => {
     smartgrid(path.src.vendor.smartgrid, {
@@ -145,15 +143,15 @@ gulp.task('smartgrid', () => {
 });
 
 gulp.task('production', ['libs', 'img'], () => {
-    gulp.src(path.src.html)
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(htmlmin({
-            collapseWhitespace: true
-        }))
-        .pipe(gulp.dest(path.dist.html));
+    // gulp.src(path.src.html)
+    //     .pipe(fileinclude({
+    //         prefix: '@@',
+    //         basepath: '@file'
+    //     }))
+    //     .pipe(htmlmin({
+    //         collapseWhitespace: true
+    //     }))
+    //     .pipe(gulp.dest(path.dist.html));
 
     gulp.src(path.src.sass)
         .pipe(sass({

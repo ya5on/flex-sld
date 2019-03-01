@@ -1,2 +1,5 @@
-"use strict";window.addEventListener("load",function(){document.querySelector(".preloader").className+=" hidden"});
-//# sourceMappingURL=maps/main.js.map
+// preloader
+window.addEventListener('load', function () {
+   let preloader = document.querySelector('.preloader');
+   preloader.className += " hidden";
+});
